@@ -7,7 +7,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -20,15 +22,16 @@ public class Main extends Application {
         button = new Button();
         button.setText("HEllo world");
 
+        Label label = new Label();
+        label.setText("Hey how are yout");
+
         StackPane layout = new StackPane();
         layout.getChildren().add(button);
 
-        button.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                button.setText("Clicked");
-            }
-        });
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(label);
+
+        button.setOnAction(e -> primaryStage.setScene(new Scene(vBox, 300, 275)));
 
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(layout, 300, 275));
