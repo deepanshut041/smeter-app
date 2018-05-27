@@ -12,6 +12,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.net.URL;
+
 public class Main extends Application {
 
     private Button button;
@@ -30,6 +32,14 @@ public class Main extends Application {
 
         VBox vBox = new VBox();
         vBox.getChildren().addAll(label);
+
+        URL url = this.getClass().getResource("sample.css");
+        if (url == null) {
+            System.out.println("Resource not found. Aborting.");
+            System.exit(-1);
+        }
+        String css = url.toExternalForm();
+        layout.getStylesheets().add(css);
 
         button.setOnAction(e -> primaryStage.setScene(new Scene(vBox, 300, 275)));
 
